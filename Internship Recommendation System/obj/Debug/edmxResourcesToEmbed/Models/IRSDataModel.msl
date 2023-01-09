@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="IRSModelStoreContainer" CdmEntityContainer="IRSEntities">
+    <EntitySetMapping Name="AgeRanges">
+      <EntityTypeMapping TypeName="IRSModel.AgeRange">
+        <MappingFragment StoreEntitySet="AgeRange">
+          <ScalarProperty Name="AgeID" ColumnName="AgeID" />
+          <ScalarProperty Name="AgeRangeVal" ColumnName="AgeRangeVal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApprovedIEs">
+      <EntityTypeMapping TypeName="IRSModel.ApprovedIE">
+        <MappingFragment StoreEntitySet="ApprovedIE">
+          <ScalarProperty Name="ApproveID" ColumnName="ApproveID" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="Parameter1" ColumnName="Parameter1" />
+          <ScalarProperty Name="Parameter2" ColumnName="Parameter2" />
+          <ScalarProperty Name="Parameter3" ColumnName="Parameter3" />
+          <ScalarProperty Name="Parameter4" ColumnName="Parameter4" />
+          <ScalarProperty Name="Parameter5" ColumnName="Parameter5" />
+          <ScalarProperty Name="Parameter6" ColumnName="Parameter6" />
+          <ScalarProperty Name="Parameter7" ColumnName="Parameter7" />
+          <ScalarProperty Name="Parameter8" ColumnName="Parameter8" />
+          <ScalarProperty Name="Parameter9" ColumnName="Parameter9" />
+          <ScalarProperty Name="Parameter10" ColumnName="Parameter10" />
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="UniID" ColumnName="UniID" />
+          <ScalarProperty Name="DegreeID" ColumnName="DegreeID" />
+          <ScalarProperty Name="UniYearID" ColumnName="UniYearID" />
+          <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+          <ScalarProperty Name="AgeID" ColumnName="AgeID" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="InternshipPeriod" ColumnName="InternshipPeriod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CGUnits">
+      <EntityTypeMapping TypeName="IRSModel.CGUnit">
+        <MappingFragment StoreEntitySet="CGUnit">
+          <ScalarProperty Name="CGUnitID" ColumnName="CGUnitID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="UniversityID_FK" ColumnName="UniversityID_FK" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Companies">
+      <EntityTypeMapping TypeName="IRSModel.Company">
+        <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+          <ScalarProperty Name="HRManager" ColumnName="HRManager" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Degrees">
+      <EntityTypeMapping TypeName="IRSModel.Degree">
+        <MappingFragment StoreEntitySet="Degree">
+          <ScalarProperty Name="DegreeID" ColumnName="DegreeID" />
+          <ScalarProperty Name="DegreeName" ColumnName="DegreeName" />
+          <ScalarProperty Name="DegreeDescription" ColumnName="DegreeDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExpectedPeriods">
+      <EntityTypeMapping TypeName="IRSModel.ExpectedPeriod">
+        <MappingFragment StoreEntitySet="ExpectedPeriod">
+          <ScalarProperty Name="ExpectedPeriodID" ColumnName="ExpectedPeriodID" />
+          <ScalarProperty Name="PeriodDescription" ColumnName="PeriodDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InternshipExperiences">
+      <EntityTypeMapping TypeName="IRSModel.InternshipExperience">
+        <MappingFragment StoreEntitySet="InternshipExperience">
+          <ScalarProperty Name="ExpID" ColumnName="ExpID" />
+          <ScalarProperty Name="CompanyID_FK" ColumnName="CompanyID_FK" />
+          <ScalarProperty Name="JobID_FK" ColumnName="JobID_FK" />
+          <ScalarProperty Name="YearStarted" ColumnName="YearStarted" />
+          <ScalarProperty Name="UniversityYear_FK" ColumnName="UniversityYear_FK" />
+          <ScalarProperty Name="InternshipPeriod" ColumnName="InternshipPeriod" />
+          <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+          <ScalarProperty Name="AcceptanceLetterPath" ColumnName="AcceptanceLetterPath" />
+          <ScalarProperty Name="ServiceLetterPath" ColumnName="ServiceLetterPath" />
+          <ScalarProperty Name="Parameter1" ColumnName="Parameter1" />
+          <ScalarProperty Name="Parameter2" ColumnName="Parameter2" />
+          <ScalarProperty Name="Parameter3" ColumnName="Parameter3" />
+          <ScalarProperty Name="Parameter4" ColumnName="Parameter4" />
+          <ScalarProperty Name="Parameter5" ColumnName="Parameter5" />
+          <ScalarProperty Name="Parameter6" ColumnName="Parameter6" />
+          <ScalarProperty Name="Parameter7" ColumnName="Parameter7" />
+          <ScalarProperty Name="Parameter8" ColumnName="Parameter8" />
+          <ScalarProperty Name="Parameter9" ColumnName="Parameter9" />
+          <ScalarProperty Name="Parameter10" ColumnName="Parameter10" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="StudentID_FK" ColumnName="StudentID_FK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Jobs">
+      <EntityTypeMapping TypeName="IRSModel.Job">
+        <MappingFragment StoreEntitySet="Job">
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="JobPosition" ColumnName="JobPosition" />
+          <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="IRSModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="IndexNo" ColumnName="IndexNo" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="DegreeID_FK" ColumnName="DegreeID_FK" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="UniversityID_FK" ColumnName="UniversityID_FK" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Universities">
+      <EntityTypeMapping TypeName="IRSModel.University">
+        <MappingFragment StoreEntitySet="University">
+          <ScalarProperty Name="UniversityID" ColumnName="UniversityID" />
+          <ScalarProperty Name="UniversityName" ColumnName="UniversityName" />
+          <ScalarProperty Name="UniversityAddress" ColumnName="UniversityAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UniYears">
+      <EntityTypeMapping TypeName="IRSModel.UniYear">
+        <MappingFragment StoreEntitySet="UniYear">
+          <ScalarProperty Name="UniYearID" ColumnName="UniYearID" />
+          <ScalarProperty Name="UniYearVal" ColumnName="UniYearVal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IRSModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionName="IRSModel.Store.getRecommendation" FunctionImportName="getRecommendation">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="IRSModel.getRecommendation_Result">
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="PreferenceScore" ColumnName="PreferenceScore" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AddApprovedEXPs" FunctionName="IRSModel.Store.AddApprovedEXPs" />
+  </EntityContainerMapping>
+</Mapping>

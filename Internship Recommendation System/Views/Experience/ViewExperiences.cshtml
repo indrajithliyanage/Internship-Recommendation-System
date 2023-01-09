@@ -1,0 +1,257 @@
+﻿@model IEnumerable<Internship_Recommendation_System.ViewModels.IntExpViewModel>
+
+@{
+    ViewBag.Title = "View Experiences";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Start Experiences -->
+<div class="col-12">
+    <div class="card recent-sales overflow-auto">
+
+        <div class="card-body">
+            <table class="table table-borderless datatable">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CompanyID_FK)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.JobID_FK)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.YearStarted)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UniversityYear_FK)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.InternshipPeriod)
+                        </th>
+                        <th>
+                            Internship Completion
+                        </th>
+                        <th>
+                            Acceptance Letter
+                        </th>
+                        <th>
+                            Service Letter
+                        </th>
+                        @{
+                            if (ViewBag.Role != "Manager")
+                            {
+                                <th data-bs-toggle="tooltip" data-bs-placement="bottom" title="@Html.DisplayNameFor(model => model.Parameter1)">
+                                    P1
+                                </th>
+                                <th data-bs-toggle="tooltip" data-bs-placement="bottom" title="@Html.DisplayNameFor(model => model.Parameter2)">
+                                    P2
+                                </th>
+                                <th data-bs-toggle="tooltip" data-bs-placement="bottom" title="@Html.DisplayNameFor(model => model.Parameter3)">
+                                    P3
+                                </th>
+                                <th data-bs-toggle="tooltip" data-bs-placement="bottom" title="@Html.DisplayNameFor(model => model.Parameter4)">
+                                    P4
+                                </th>
+                                <th data-bs-toggle="tooltip" data-bs-placement="bottom" title="@Html.DisplayNameFor(model => model.Parameter5)">
+                                    P5
+                                </th>
+                                <th data-bs-toggle="tooltip" data-bs-placement="bottom" title="@Html.DisplayNameFor(model => model.Parameter6)">
+                                    P6
+                                </th>
+                                <th data-bs-toggle="tooltip" data-bs-placement="bottom" title="@Html.DisplayNameFor(model => model.Parameter7)">
+                                    P7
+                                </th>
+                                <th data-bs-toggle="tooltip" data-bs-placement="bottom" title="@Html.DisplayNameFor(model => model.Parameter8)">
+                                    P8
+                                </th>
+                                <th data-bs-toggle="tooltip" data-bs-placement="bottom" title="@Html.DisplayNameFor(model => model.Parameter9)">
+                                    P9
+                                </th>
+                                <th data-bs-toggle="tooltip" data-bs-placement="bottom" title="@Html.DisplayNameFor(model => model.Parameter10)">
+                                    P10
+                                </th>
+                            }
+                        }
+                        <th>
+                            @Html.DisplayNameFor(model => model.IsApproved)
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Company.CompanyName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Job.JobPosition)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.YearStarted)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UniYear.UniYearVal)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.InternshipPeriod)
+                            </td>
+                            <td>
+                                @{
+                                    if (item.IsCompleted == true)
+                                    {
+
+                                        <span class="badge bg-success">Completed</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">Not Completed</span>
+                                    }
+                                }
+                            </td>
+                            <td>
+                                @{
+                                    if (item.AcceptanceLetterPath != null)
+                                    {
+                                        <a href="@Url.Content(item.AcceptanceLetterPath)" target="_blank">
+                                            <i class="bx bxs-file-pdf bx-lg"></i>
+                                        </a>
+                                    }
+                                }
+                            </td>
+                            <td>
+                                @{
+                                    if (item.ServiceLetterPath != null)
+                                    {
+                                        <a href="@Url.Content(item.ServiceLetterPath)" target="_blank">
+                                            <i class="bx bxs-file-pdf bx-lg"></i>
+                                        </a>
+                                    }
+                                }
+                            </td>
+                            @{
+                                if (ViewBag.Role != "Manager")
+                                {
+                                    <td>
+                                        <span class="btn btn-primary"><i class="bi bi-star"></i>@Html.DisplayFor(modelItem => item.Parameter1)</span>
+                                    </td>
+                                    <td class="fw-bold">
+                                        <span class="btn btn-primary"><i class="bi bi-star"></i>@Html.DisplayFor(modelItem => item.Parameter2)</span>
+                                    </td>
+                                    <td class="fw-bold">
+                                        <span class="btn btn-primary"><i class="bi bi-star"></i>@Html.DisplayFor(modelItem => item.Parameter3)</span>
+                                    </td>
+                                    <td class="fw-bold">
+                                        <span class="btn btn-primary"><i class="bi bi-star"></i>@Html.DisplayFor(modelItem => item.Parameter4)</span>
+                                    </td>
+                                    <td class="fw-bold">
+                                        <span class="btn btn-primary"><i class="bi bi-star"></i>@Html.DisplayFor(modelItem => item.Parameter5)</span>
+                                    </td>
+                                    <td class="fw-bold">
+                                        <span class="btn btn-primary"><i class="bi bi-star"></i>@Html.DisplayFor(modelItem => item.Parameter6)</span>
+                                    </td>
+                                    <td class="fw-bold">
+                                        <span class="btn btn-primary"><i class="bi bi-star"></i> @Html.DisplayFor(modelItem => item.Parameter7)</span>
+                                    </td>
+                                    <td class="fw-bold">
+                                        <span class="btn btn-primary"><i class="bi bi-star"></i>@Html.DisplayFor(modelItem => item.Parameter8)</span>
+                                    </td>
+                                    <td class="fw-bold">
+                                        <span class="btn btn-primary"><i class="bi bi-star"></i>@Html.DisplayFor(modelItem => item.Parameter9)</span>
+                                    </td>
+                                    <td class="fw-bold">
+                                        <span class="btn btn-primary"><i class="bi bi-star"></i>@Html.DisplayFor(modelItem => item.Parameter10)</span>
+                                    </td>
+                                }
+                            }
+                            <td>
+                                @{
+                                    if (item.IsApproved == true)
+                                    {
+
+                                        <span class="badge bg-success">Approved</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-warning">Pending</span>
+                                    }
+                                }
+                            </td>
+                            <td>
+                                @{
+                                    if (ViewBag.Role == "Manager" && item.IsApproved != true)
+                                    {
+
+                                        <a class="btn btn-warning" href="#" onclick="approveEXP(@item.IntExpID)">Approve</a>
+                                    }
+                                    else if(ViewBag.Role != "Manager" && item.IsApproved != true)
+                                    {
+                                        <a class="btn btn-secondary" href="#" onclick="editEXP(@item.IntExpID)">Edit</a>
+                                    }
+                                    <a class="btn btn-danger g-3" href="#" onclick="deleteEXP(@item.IntExpID)">Delete</a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- End Experiences -->
+<!-- Delete Modal -->
+<div class="modal fade" id="expDeleteModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-primary"><i class="bi bi-info-circle-fill g-5"></i>&nbsp;Information</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="expDeleteModal-modal-body">
+                Are You Sure You want to Delete this Record?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a id="deleteBtn" class="btn btn-danger" href="#">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Delete Modal-->
+<!-- Approve Modal -->
+<div class="modal fade" id="expapproveModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-primary"><i class="bi bi-info-circle-fill g-5"></i>&nbsp;Information</h5>
+            </div>
+            <div class="modal-body" id="expapproveModal-modal-body">
+                Are You Sure You want to Approve this Record?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a id="approveBtn" class="btn btn-warning" href="#">Approve</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Approve Modal-->
+<!-- General Modal -->
+<div class="modal fade" id="expGeneralModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-primary"><i class="bi bi-info-circle-fill g-5"></i>&nbsp;Information</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="expGeneralModal-modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End General Modal-->
+
+@section Scripts{
+    <script src="~/ViewScripts/Experience.js"></script>
+}

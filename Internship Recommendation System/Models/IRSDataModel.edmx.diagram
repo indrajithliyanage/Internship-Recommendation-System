@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ee9203d2d09b4affb12e6f8ba97e69c4" Name="Diagram1">
+        <EntityTypeShape EntityType="IRSModel.AgeRange" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="IRSModel.ApprovedIE" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="IRSModel.CGUnit" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IRSModel.Company" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IRSModel.Degree" Width="1.5" PointX="3.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IRSModel.ExpectedPeriod" Width="1.5" PointX="8.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="IRSModel.InternshipExperience" Width="1.5" PointX="8.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IRSModel.Job" Width="1.5" PointX="6" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IRSModel.Student" Width="1.5" PointX="6" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IRSModel.University" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IRSModel.UniYear" Width="1.5" PointX="6" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IRSModel.User" Width="1.5" PointX="2.75" PointY="9" IsExpanded="true" />
+        <AssociationConnector Association="IRSModel.FK_CGUnit_University" ManuallyRouted="false" />
+        <AssociationConnector Association="IRSModel.FK_InternshipExperience_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="IRSModel.FK_Student_Degree" ManuallyRouted="false" />
+        <AssociationConnector Association="IRSModel.FK_InternshipExperience_Job" ManuallyRouted="false" />
+        <AssociationConnector Association="IRSModel.FK_InternshipExperience_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="IRSModel.FK_InternshipExperience_UniYear" ManuallyRouted="false" />
+        <AssociationConnector Association="IRSModel.FK_Student_University" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

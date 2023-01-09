@@ -1,0 +1,61 @@
+﻿@model Internship_Recommendation_System.ViewModels.DegreeViewModel
+
+@{
+    ViewBag.Title = "Add Degree";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-12">
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title text-center">Degree Form</h5>
+
+            <!-- General Form Elements -->
+            <form id="degreeForm" class="row g-3 needs-validation" novalidate>
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.DegreeName, htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.DegreeName, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.DegreeName, "", new { @class = "text-danger small d-block text-center" })
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.DegreeDescription, htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.DegreeDescription, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DegreeDescription, "", new { @class = "text-danger small d-block text-center" })
+                    </div>
+                </div>
+
+                <div class="row mb-3 justify-content-center">
+                    <input id="degreeSub" type="submit" class="btn btn-primary w-50" value="Submit Form">
+                </div>
+            </form>
+            <!-- End General Form Elements -->
+        </div>
+    </div>
+</div>
+
+<!-- Vertically centered Modal -->
+<div class="modal fade" id="degreeModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-primary"><i class="bi bi-info-circle-fill g-5"></i>&nbsp;Information</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="degreeModal-modal-body">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Vertically centered Modal-->
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/ViewScripts/Degree.js"></script>
+}

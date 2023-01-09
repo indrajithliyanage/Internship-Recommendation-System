@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IRSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AgeRange">
+    <Key>
+      <PropertyRef Name="AgeID" />
+    </Key>
+    <Property Name="AgeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AgeRangeVal" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ApprovedIE">
+    <Key>
+      <PropertyRef Name="ApproveID" />
+    </Key>
+    <Property Name="ApproveID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyID" Type="int" Nullable="false" />
+    <Property Name="Parameter1" Type="int" Nullable="false" />
+    <Property Name="Parameter2" Type="int" Nullable="false" />
+    <Property Name="Parameter3" Type="int" Nullable="false" />
+    <Property Name="Parameter4" Type="int" Nullable="false" />
+    <Property Name="Parameter5" Type="int" Nullable="false" />
+    <Property Name="Parameter6" Type="int" Nullable="false" />
+    <Property Name="Parameter7" Type="int" Nullable="false" />
+    <Property Name="Parameter8" Type="int" Nullable="false" />
+    <Property Name="Parameter9" Type="int" Nullable="false" />
+    <Property Name="Parameter10" Type="int" Nullable="false" />
+    <Property Name="JobID" Type="int" />
+    <Property Name="UniID" Type="int" />
+    <Property Name="DegreeID" Type="int" />
+    <Property Name="UniYearID" Type="int" />
+    <Property Name="IsCompleted" Type="bit" />
+    <Property Name="AgeID" Type="int" />
+    <Property Name="Gender" Type="varchar" MaxLength="6" />
+    <Property Name="InternshipPeriod" Type="int" />
+  </EntityType>
+  <EntityType Name="CGUnit">
+    <Key>
+      <PropertyRef Name="CGUnitID" />
+    </Key>
+    <Property Name="CGUnitID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="PhoneNo" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Role" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="UniversityID_FK" Type="int" Nullable="false" />
+    <Property Name="IsApproved" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="CompanyID" />
+    </Key>
+    <Property Name="CompanyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyName" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="CompanyAddress" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="HRManager" Type="varchar" MaxLength="150" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="PhoneNo" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Degree">
+    <Key>
+      <PropertyRef Name="DegreeID" />
+    </Key>
+    <Property Name="DegreeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DegreeName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DegreeDescription" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="ExpectedPeriod">
+    <Key>
+      <PropertyRef Name="ExpectedPeriodID" />
+    </Key>
+    <Property Name="ExpectedPeriodID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PeriodDescription" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InternshipExperience">
+    <Key>
+      <PropertyRef Name="ExpID" />
+    </Key>
+    <Property Name="ExpID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyID_FK" Type="int" Nullable="false" />
+    <Property Name="JobID_FK" Type="int" Nullable="false" />
+    <Property Name="YearStarted" Type="date" Nullable="false" />
+    <Property Name="UniversityYear_FK" Type="int" Nullable="false" />
+    <Property Name="InternshipPeriod" Type="int" Nullable="false" />
+    <Property Name="IsCompleted" Type="bit" Nullable="false" />
+    <Property Name="AcceptanceLetterPath" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="ServiceLetterPath" Type="varchar" MaxLength="1000" />
+    <Property Name="Parameter1" Type="int" Nullable="false" />
+    <Property Name="Parameter2" Type="int" Nullable="false" />
+    <Property Name="Parameter3" Type="int" Nullable="false" />
+    <Property Name="Parameter4" Type="int" Nullable="false" />
+    <Property Name="Parameter5" Type="int" Nullable="false" />
+    <Property Name="Parameter6" Type="int" Nullable="false" />
+    <Property Name="Parameter7" Type="int" Nullable="false" />
+    <Property Name="Parameter8" Type="int" Nullable="false" />
+    <Property Name="Parameter9" Type="int" Nullable="false" />
+    <Property Name="Parameter10" Type="int" Nullable="false" />
+    <Property Name="IsApproved" Type="bit" Nullable="false" />
+    <Property Name="StudentID_FK" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="JobID" />
+    </Key>
+    <Property Name="JobID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobPosition" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="JobDescription" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IndexNo" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Gender" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="DateOfBirth" Type="date" Nullable="false" />
+    <Property Name="DegreeID_FK" Type="int" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Role" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="UniversityID_FK" Type="int" Nullable="false" />
+    <Property Name="IsApproved" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="University">
+    <Key>
+      <PropertyRef Name="UniversityID" />
+    </Key>
+    <Property Name="UniversityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UniversityName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="UniversityAddress" Type="varchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UniYear">
+    <Key>
+      <PropertyRef Name="UniYearID" />
+    </Key>
+    <Property Name="UniYearID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UniYearVal" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Role" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_CGUnit_University">
+    <End Role="University" Type="Self.University" Multiplicity="1" />
+    <End Role="CGUnit" Type="Self.CGUnit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="University">
+        <PropertyRef Name="UniversityID" />
+      </Principal>
+      <Dependent Role="CGUnit">
+        <PropertyRef Name="UniversityID_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InternshipExperience_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="InternshipExperience" Type="Self.InternshipExperience" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="CompanyID" />
+      </Principal>
+      <Dependent Role="InternshipExperience">
+        <PropertyRef Name="CompanyID_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InternshipExperience_Job">
+    <End Role="Job" Type="Self.Job" Multiplicity="1" />
+    <End Role="InternshipExperience" Type="Self.InternshipExperience" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="JobID" />
+      </Principal>
+      <Dependent Role="InternshipExperience">
+        <PropertyRef Name="JobID_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InternshipExperience_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="InternshipExperience" Type="Self.InternshipExperience" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="InternshipExperience">
+        <PropertyRef Name="StudentID_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InternshipExperience_UniYear">
+    <End Role="UniYear" Type="Self.UniYear" Multiplicity="1" />
+    <End Role="InternshipExperience" Type="Self.InternshipExperience" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UniYear">
+        <PropertyRef Name="UniYearID" />
+      </Principal>
+      <Dependent Role="InternshipExperience">
+        <PropertyRef Name="UniversityYear_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Degree">
+    <End Role="Degree" Type="Self.Degree" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Degree">
+        <PropertyRef Name="DegreeID" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="DegreeID_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_University">
+    <End Role="University" Type="Self.University" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="University">
+        <PropertyRef Name="UniversityID" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="UniversityID_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="AddApprovedEXPs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ExpID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getRecommendation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobID" Type="int" Mode="In" />
+    <Parameter Name="UniID" Type="int" Mode="In" />
+    <Parameter Name="DegreeID" Type="int" Mode="In" />
+    <Parameter Name="UniYearID" Type="int" Mode="In" />
+    <Parameter Name="IsCompleted" Type="bit" Mode="In" />
+    <Parameter Name="AgeID" Type="int" Mode="In" />
+    <Parameter Name="Gender" Type="varchar" Mode="In" />
+    <Parameter Name="InternshipPeriod" Type="int" Mode="In" />
+    <Parameter Name="Para1W" Type="int" Mode="In" />
+    <Parameter Name="Para2W" Type="int" Mode="In" />
+    <Parameter Name="Para3W" Type="int" Mode="In" />
+    <Parameter Name="Para4W" Type="int" Mode="In" />
+    <Parameter Name="Para5W" Type="int" Mode="In" />
+    <Parameter Name="Para6W" Type="int" Mode="In" />
+    <Parameter Name="Para7W" Type="int" Mode="In" />
+    <Parameter Name="Para8W" Type="int" Mode="In" />
+    <Parameter Name="Para9W" Type="int" Mode="In" />
+    <Parameter Name="Para10W" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="CompanyName" Type="varchar" MaxLength="100" />
+          <Property Name="PreferenceScore" Type="float" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <EntityContainer Name="IRSModelStoreContainer">
+    <EntitySet Name="AgeRange" EntityType="Self.AgeRange" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ApprovedIE" EntityType="Self.ApprovedIE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CGUnit" EntityType="Self.CGUnit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Degree" EntityType="Self.Degree" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExpectedPeriod" EntityType="Self.ExpectedPeriod" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InternshipExperience" EntityType="Self.InternshipExperience" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="University" EntityType="Self.University" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UniYear" EntityType="Self.UniYear" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CGUnit_University" Association="Self.FK_CGUnit_University">
+      <End Role="University" EntitySet="University" />
+      <End Role="CGUnit" EntitySet="CGUnit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InternshipExperience_Company" Association="Self.FK_InternshipExperience_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="InternshipExperience" EntitySet="InternshipExperience" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InternshipExperience_Job" Association="Self.FK_InternshipExperience_Job">
+      <End Role="Job" EntitySet="Job" />
+      <End Role="InternshipExperience" EntitySet="InternshipExperience" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InternshipExperience_Student" Association="Self.FK_InternshipExperience_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="InternshipExperience" EntitySet="InternshipExperience" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InternshipExperience_UniYear" Association="Self.FK_InternshipExperience_UniYear">
+      <End Role="UniYear" EntitySet="UniYear" />
+      <End Role="InternshipExperience" EntitySet="InternshipExperience" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Degree" Association="Self.FK_Student_Degree">
+      <End Role="Degree" EntitySet="Degree" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_University" Association="Self.FK_Student_University">
+      <End Role="University" EntitySet="University" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

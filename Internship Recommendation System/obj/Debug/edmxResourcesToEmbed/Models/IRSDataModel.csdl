@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IRSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="getRecommendation_Result">
+    <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PreferenceScore" Type="Double" />
+  </ComplexType>
+  <EntityType Name="AgeRange">
+    <Key>
+      <PropertyRef Name="AgeID" />
+    </Key>
+    <Property Name="AgeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AgeRangeVal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ApprovedIE">
+    <Key>
+      <PropertyRef Name="ApproveID" />
+    </Key>
+    <Property Name="ApproveID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyID" Type="Int32" Nullable="false" />
+    <Property Name="Parameter1" Type="Int32" Nullable="false" />
+    <Property Name="Parameter2" Type="Int32" Nullable="false" />
+    <Property Name="Parameter3" Type="Int32" Nullable="false" />
+    <Property Name="Parameter4" Type="Int32" Nullable="false" />
+    <Property Name="Parameter5" Type="Int32" Nullable="false" />
+    <Property Name="Parameter6" Type="Int32" Nullable="false" />
+    <Property Name="Parameter7" Type="Int32" Nullable="false" />
+    <Property Name="Parameter8" Type="Int32" Nullable="false" />
+    <Property Name="Parameter9" Type="Int32" Nullable="false" />
+    <Property Name="Parameter10" Type="Int32" Nullable="false" />
+    <Property Name="JobID" Type="Int32" />
+    <Property Name="UniID" Type="Int32" />
+    <Property Name="DegreeID" Type="Int32" />
+    <Property Name="UniYearID" Type="Int32" />
+    <Property Name="IsCompleted" Type="Boolean" />
+    <Property Name="AgeID" Type="Int32" />
+    <Property Name="Gender" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="InternshipPeriod" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CGUnit">
+    <Key>
+      <PropertyRef Name="CGUnitID" />
+    </Key>
+    <Property Name="CGUnitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PhoneNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UniversityID_FK" Type="Int32" Nullable="false" />
+    <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="University" Relationship="Self.FK_CGUnit_University" FromRole="CGUnit" ToRole="University" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="CompanyID" />
+    </Key>
+    <Property Name="CompanyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CompanyAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HRManager" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="InternshipExperiences" Relationship="Self.FK_InternshipExperience_Company" FromRole="Company" ToRole="InternshipExperience" />
+  </EntityType>
+  <EntityType Name="Degree">
+    <Key>
+      <PropertyRef Name="DegreeID" />
+    </Key>
+    <Property Name="DegreeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DegreeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DegreeDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Students" Relationship="Self.FK_Student_Degree" FromRole="Degree" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="ExpectedPeriod">
+    <Key>
+      <PropertyRef Name="ExpectedPeriodID" />
+    </Key>
+    <Property Name="ExpectedPeriodID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PeriodDescription" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InternshipExperience">
+    <Key>
+      <PropertyRef Name="ExpID" />
+    </Key>
+    <Property Name="ExpID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyID_FK" Type="Int32" Nullable="false" />
+    <Property Name="JobID_FK" Type="Int32" Nullable="false" />
+    <Property Name="YearStarted" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="UniversityYear_FK" Type="Int32" Nullable="false" />
+    <Property Name="InternshipPeriod" Type="Int32" Nullable="false" />
+    <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
+    <Property Name="AcceptanceLetterPath" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ServiceLetterPath" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Parameter1" Type="Int32" Nullable="false" />
+    <Property Name="Parameter2" Type="Int32" Nullable="false" />
+    <Property Name="Parameter3" Type="Int32" Nullable="false" />
+    <Property Name="Parameter4" Type="Int32" Nullable="false" />
+    <Property Name="Parameter5" Type="Int32" Nullable="false" />
+    <Property Name="Parameter6" Type="Int32" Nullable="false" />
+    <Property Name="Parameter7" Type="Int32" Nullable="false" />
+    <Property Name="Parameter8" Type="Int32" Nullable="false" />
+    <Property Name="Parameter9" Type="Int32" Nullable="false" />
+    <Property Name="Parameter10" Type="Int32" Nullable="false" />
+    <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+    <Property Name="StudentID_FK" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Company" Relationship="Self.FK_InternshipExperience_Company" FromRole="InternshipExperience" ToRole="Company" />
+    <NavigationProperty Name="Job" Relationship="Self.FK_InternshipExperience_Job" FromRole="InternshipExperience" ToRole="Job" />
+    <NavigationProperty Name="Student" Relationship="Self.FK_InternshipExperience_Student" FromRole="InternshipExperience" ToRole="Student" />
+    <NavigationProperty Name="UniYear" Relationship="Self.FK_InternshipExperience_UniYear" FromRole="InternshipExperience" ToRole="UniYear" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="JobID" />
+    </Key>
+    <Property Name="JobID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobPosition" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="JobDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="InternshipExperiences" Relationship="Self.FK_InternshipExperience_Job" FromRole="Job" ToRole="InternshipExperience" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IndexNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DegreeID_FK" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UniversityID_FK" Type="Int32" Nullable="false" />
+    <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Degree" Relationship="Self.FK_Student_Degree" FromRole="Student" ToRole="Degree" />
+    <NavigationProperty Name="InternshipExperiences" Relationship="Self.FK_InternshipExperience_Student" FromRole="Student" ToRole="InternshipExperience" />
+    <NavigationProperty Name="University" Relationship="Self.FK_Student_University" FromRole="Student" ToRole="University" />
+  </EntityType>
+  <EntityType Name="University">
+    <Key>
+      <PropertyRef Name="UniversityID" />
+    </Key>
+    <Property Name="UniversityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UniversityName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UniversityAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CGUnits" Relationship="Self.FK_CGUnit_University" FromRole="University" ToRole="CGUnit" />
+    <NavigationProperty Name="Students" Relationship="Self.FK_Student_University" FromRole="University" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="UniYear">
+    <Key>
+      <PropertyRef Name="UniYearID" />
+    </Key>
+    <Property Name="UniYearID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UniYearVal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="InternshipExperiences" Relationship="Self.FK_InternshipExperience_UniYear" FromRole="UniYear" ToRole="InternshipExperience" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_CGUnit_University">
+    <End Role="University" Type="Self.University" Multiplicity="1" />
+    <End Role="CGUnit" Type="Self.CGUnit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="University">
+        <PropertyRef Name="UniversityID" />
+      </Principal>
+      <Dependent Role="CGUnit">
+        <PropertyRef Name="UniversityID_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InternshipExperience_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="InternshipExperience" Type="Self.InternshipExperience" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="CompanyID" />
+      </Principal>
+      <Dependent Role="InternshipExperience">
+        <PropertyRef Name="CompanyID_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Degree">
+    <End Role="Degree" Type="Self.Degree" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Degree">
+        <PropertyRef Name="DegreeID" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="DegreeID_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InternshipExperience_Job">
+    <End Role="Job" Type="Self.Job" Multiplicity="1" />
+    <End Role="InternshipExperience" Type="Self.InternshipExperience" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="JobID" />
+      </Principal>
+      <Dependent Role="InternshipExperience">
+        <PropertyRef Name="JobID_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InternshipExperience_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="InternshipExperience" Type="Self.InternshipExperience" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="InternshipExperience">
+        <PropertyRef Name="StudentID_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InternshipExperience_UniYear">
+    <End Role="UniYear" Type="Self.UniYear" Multiplicity="1" />
+    <End Role="InternshipExperience" Type="Self.InternshipExperience" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UniYear">
+        <PropertyRef Name="UniYearID" />
+      </Principal>
+      <Dependent Role="InternshipExperience">
+        <PropertyRef Name="UniversityYear_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_University">
+    <End Role="University" Type="Self.University" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="University">
+        <PropertyRef Name="UniversityID" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="UniversityID_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="IRSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AgeRanges" EntityType="Self.AgeRange" />
+    <EntitySet Name="ApprovedIEs" EntityType="Self.ApprovedIE" />
+    <EntitySet Name="CGUnits" EntityType="Self.CGUnit" />
+    <EntitySet Name="Companies" EntityType="Self.Company" />
+    <EntitySet Name="Degrees" EntityType="Self.Degree" />
+    <EntitySet Name="ExpectedPeriods" EntityType="Self.ExpectedPeriod" />
+    <EntitySet Name="InternshipExperiences" EntityType="Self.InternshipExperience" />
+    <EntitySet Name="Jobs" EntityType="Self.Job" />
+    <EntitySet Name="Students" EntityType="Self.Student" />
+    <EntitySet Name="Universities" EntityType="Self.University" />
+    <EntitySet Name="UniYears" EntityType="Self.UniYear" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_CGUnit_University" Association="Self.FK_CGUnit_University">
+      <End Role="University" EntitySet="Universities" />
+      <End Role="CGUnit" EntitySet="CGUnits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InternshipExperience_Company" Association="Self.FK_InternshipExperience_Company">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="InternshipExperience" EntitySet="InternshipExperiences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Degree" Association="Self.FK_Student_Degree">
+      <End Role="Degree" EntitySet="Degrees" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InternshipExperience_Job" Association="Self.FK_InternshipExperience_Job">
+      <End Role="Job" EntitySet="Jobs" />
+      <End Role="InternshipExperience" EntitySet="InternshipExperiences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InternshipExperience_Student" Association="Self.FK_InternshipExperience_Student">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="InternshipExperience" EntitySet="InternshipExperiences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InternshipExperience_UniYear" Association="Self.FK_InternshipExperience_UniYear">
+      <End Role="UniYear" EntitySet="UniYears" />
+      <End Role="InternshipExperience" EntitySet="InternshipExperiences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_University" Association="Self.FK_Student_University">
+      <End Role="University" EntitySet="Universities" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <FunctionImport Name="getRecommendation" IsComposable="true" ReturnType="Collection(IRSModel.getRecommendation_Result)">
+      <Parameter Name="JobID" Mode="In" Type="Int32" />
+      <Parameter Name="UniID" Mode="In" Type="Int32" />
+      <Parameter Name="DegreeID" Mode="In" Type="Int32" />
+      <Parameter Name="UniYearID" Mode="In" Type="Int32" />
+      <Parameter Name="IsCompleted" Mode="In" Type="Boolean" />
+      <Parameter Name="AgeID" Mode="In" Type="Int32" />
+      <Parameter Name="Gender" Mode="In" Type="String" />
+      <Parameter Name="InternshipPeriod" Mode="In" Type="Int32" />
+      <Parameter Name="Para1W" Mode="In" Type="Int32" />
+      <Parameter Name="Para2W" Mode="In" Type="Int32" />
+      <Parameter Name="Para3W" Mode="In" Type="Int32" />
+      <Parameter Name="Para4W" Mode="In" Type="Int32" />
+      <Parameter Name="Para5W" Mode="In" Type="Int32" />
+      <Parameter Name="Para6W" Mode="In" Type="Int32" />
+      <Parameter Name="Para7W" Mode="In" Type="Int32" />
+      <Parameter Name="Para8W" Mode="In" Type="Int32" />
+      <Parameter Name="Para9W" Mode="In" Type="Int32" />
+      <Parameter Name="Para10W" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AddApprovedEXPs">
+      <Parameter Name="ExpID" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

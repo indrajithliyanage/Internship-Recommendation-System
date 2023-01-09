@@ -1,0 +1,86 @@
+﻿@model Internship_Recommendation_System.ViewModels.CompanyViewModel
+
+@{
+    ViewBag.Title = "Add Company";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-12">
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title text-center">Company Form</h5>
+
+            <!-- General Form Elements -->
+            <form id="compForm" class="row g-3 needs-validation" novalidate>
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.CompanyName, htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger small d-block text-center" })
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.HRManager, htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.HRManager, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.HRManager, "", new { @class = "text-danger small d-block text-center" })
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger small d-block text-center" })
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.PhoneNo, htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.PhoneNo, new { htmlAttributes = new { @class = "form-control", pattern = "^\\d{10}$" } })
+                        @Html.ValidationMessageFor(model => model.PhoneNo, "", new { @class = "text-danger small d-block text-center" })
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.CompanyAddress, htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.CompanyAddress, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.CompanyAddress, "", new { @class = "text-danger small d-block text-center" })
+                    </div>
+                </div>
+
+                <div class="row mb-3 justify-content-center">
+                    <input id="btncompSub" type="submit" class="btn btn-primary w-50" value="Submit Form">
+                </div>
+
+            </form>
+            <!-- End General Form Elements -->
+
+        </div>
+    </div>
+
+</div>
+
+<!-- Vertically centered Modal -->
+<div class="modal fade" id="companyModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-primary"><i class="bi bi-info-circle-fill g-5"></i>&nbsp;Information</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="companyModal-modal-body">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Vertically centered Modal-->
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/ViewScripts/Company.js"></script>
+}
+

@@ -1,0 +1,248 @@
+﻿@model Internship_Recommendation_System.ViewModels.RecommendationViewModel
+
+@{
+    ViewBag.Title = "Get Recommendation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/slider-style.css">
+
+<div class="col-lg-12">
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title text-center">Recommendation Form</h5>
+
+            <!-- Recommendation Form -->
+            <form id="recommendationForm" class="row g-3 needs-validation" novalidate>
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.JobID, htmlAttributes: new { @class = "col-sm-2 col-form-label fw-bold" })
+                    <div class="col-sm-10">
+                        @Html.DropDownListFor(model => model.JobID, null, "Select", htmlAttributes: new { @class = "form-select", required = "required" })
+                        @Html.ValidationMessageFor(model => model.JobID, "", new { @class = "text-danger small d-block text-center" })
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.UniYearID, htmlAttributes: new { @class = "col-sm-2 col-form-label fw-bold" })
+                    <div class="col-sm-10">
+                        @Html.DropDownListFor(model => model.UniYearID, null, "Select", htmlAttributes: new { @class = "form-select" })
+                        @Html.ValidationMessageFor(model => model.UniYearID, "", new { @class = "text-danger small d-block text-center" })
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.ExpectedPeriodID, htmlAttributes: new { @class = "col-sm-2 col-form-label fw-bold" })
+                    <div class="col-sm-10">
+                        @Html.DropDownListFor(model => model.ExpectedPeriodID, null, "Select", htmlAttributes: new { @class = "form-select" })
+                        @Html.ValidationMessageFor(model => model.ExpectedPeriodID, "", new { @class = "text-danger small d-block text-center" })
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    @Html.LabelFor(model => model.IsCompleted, htmlAttributes: new { @class = "col-sm-2 col-form-label fw-bold" })
+                    <div class="col-sm-10">
+                        <div class="form-check form-switch">
+                            @Html.EditorFor(model => model.IsCompleted, new { htmlAttributes = new { @class = "form-check-input" } })
+                            @Html.ValidationMessageFor(model => model.IsCompleted, "", new { @class = "text-danger small d-block text-center" })
+                        </div>                        
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row mb-3">
+                    <div class="col mx-auto text-center">
+                        @Html.LabelFor(model => model.IncludeBioData, htmlAttributes: new { @class = "col-form-label fw-bold" })
+                        <div class="col d-flex justify-content-center">
+                            <div class="form-check form-switch" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Bio Data includes Age & Gender">
+                                @Html.EditorFor(model => model.IncludeBioData, new { htmlAttributes = new { @class = "form-check-input" } })
+                                @Html.ValidationMessageFor(model => model.IncludeBioData, "", new { @class = "text-danger small d-block text-center" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mx-auto text-center">
+                        @Html.LabelFor(model => model.IncludeAcademicData, htmlAttributes: new { @class = "col-form-label fw-bold" })
+                        <div class="col d-flex justify-content-center">
+                            <div class="form-check form-switch" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Academic Data includes University & Degree">
+                                @Html.EditorFor(model => model.IncludeAcademicData, new { htmlAttributes = new { @class = "form-check-input" } })
+                                @Html.ValidationMessageFor(model => model.IncludeAcademicData, "", new { @class = "text-danger small d-block text-center" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr />
+
+                <div id="sliderSection">
+                    <div class="row mb-3">
+                        <div class="col">
+                            <div class="text-center">
+                                @Html.LabelFor(model => model.Parameter1, htmlAttributes: new { @class = "col-form-label fw-bold" })
+                            </div>
+                            <div>
+                                <div id="parameter1val" class="d-flex justify-content-center text-success fw-bold"></div>
+                                <div id="recParaSlider1"></div>
+                                @Html.EditorFor(model => model.Parameter1, new { htmlAttributes = new { @class = "form-control", required = "required", @style = "visibility:hidden;" } })
+                                @Html.ValidationMessageFor(model => model.Parameter1, "", new { @class = "text-danger small d-block text-center" })
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="text-center">
+                                @Html.LabelFor(model => model.Parameter2, htmlAttributes: new { @class = "col-form-label fw-bold" })
+                            </div>
+                            <div>
+                                <div id="parameter2val" class="d-flex justify-content-center text-success fw-bold"></div>
+                                <div id="recParaSlider2"></div>
+                                @Html.EditorFor(model => model.Parameter2, new { htmlAttributes = new { @class = "form-control", required = "required", @style = "visibility:hidden;" } })
+                                @Html.ValidationMessageFor(model => model.Parameter2, "", new { @class = "text-danger small d-block text-center" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <div class="text-center">
+                                @Html.LabelFor(model => model.Parameter3, htmlAttributes: new { @class = "col-form-label fw-bold" })
+                            </div>
+                            <div>
+                                <div id="parameter3val" class="d-flex justify-content-center text-success fw-bold"></div>
+                                <div id="recParaSlider3"></div>
+                                @Html.EditorFor(model => model.Parameter3, new { htmlAttributes = new { @class = "form-control", required = "required", @style = "visibility:hidden;" } })
+                                @Html.ValidationMessageFor(model => model.Parameter3, "", new { @class = "text-danger small d-block text-center" })
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="text-center">
+                                @Html.LabelFor(model => model.Parameter4, htmlAttributes: new { @class = "col-form-label fw-bold" })
+                            </div>
+                            <div>
+                                <div id="parameter4val" class="d-flex justify-content-center text-success fw-bold"></div>
+                                <div id="recParaSlider4"></div>
+                                @Html.EditorFor(model => model.Parameter4, new { htmlAttributes = new { @class = "form-control", required = "required", @style = "visibility:hidden;" } })
+                                @Html.ValidationMessageFor(model => model.Parameter4, "", new { @class = "text-danger small d-block text-center" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <div class="text-center">
+                                @Html.LabelFor(model => model.Parameter5, htmlAttributes: new { @class = "col-form-label fw-bold" })
+                            </div>
+                            <div>
+                                <div id="parameter5val" class="d-flex justify-content-center text-success fw-bold"></div>
+                                <div id="recParaSlider5"></div>
+                                @Html.EditorFor(model => model.Parameter5, new { htmlAttributes = new { @class = "form-control", required = "required", @style = "visibility:hidden;" } })
+                                @Html.ValidationMessageFor(model => model.Parameter5, "", new { @class = "text-danger small d-block text-center" })
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="text-center">
+                                @Html.LabelFor(model => model.Parameter6, htmlAttributes: new { @class = "col-form-label fw-bold" })
+                            </div>
+                            <div>
+                                <div id="parameter6val" class="d-flex justify-content-center text-success fw-bold"></div>
+                                <div id="recParaSlider6"></div>
+                                @Html.EditorFor(model => model.Parameter6, new { htmlAttributes = new { @class = "form-control", required = "required", @style = "visibility:hidden;" } })
+                                @Html.ValidationMessageFor(model => model.Parameter6, "", new { @class = "text-danger small d-block text-center" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <div class="text-center">
+                                @Html.LabelFor(model => model.Parameter7, htmlAttributes: new { @class = "col-form-label fw-bold" })
+                            </div>
+                            <div>
+                                <div id="parameter7val" class="d-flex justify-content-center text-success fw-bold"></div>
+                                <div id="recParaSlider7"></div>
+                                @Html.EditorFor(model => model.Parameter7, new { htmlAttributes = new { @class = "form-control", required = "required", @style = "visibility:hidden;" } })
+                                @Html.ValidationMessageFor(model => model.Parameter7, "", new { @class = "text-danger small d-block text-center" })
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="text-center">
+                                @Html.LabelFor(model => model.Parameter8, htmlAttributes: new { @class = "col-form-label fw-bold" })
+                            </div>
+                            <div>
+                                <div id="parameter8val" class="d-flex justify-content-center text-success fw-bold"></div>
+                                <div id="recParaSlider8"></div>
+                                @Html.EditorFor(model => model.Parameter8, new { htmlAttributes = new { @class = "form-control", required = "required", @style = "visibility:hidden;" } })
+                                @Html.ValidationMessageFor(model => model.Parameter8, "", new { @class = "text-danger small d-block text-center" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <div class="text-center">
+                                @Html.LabelFor(model => model.Parameter9, htmlAttributes: new { @class = "col-form-label fw-bold" })
+                            </div>
+                            <div>
+                                <div id="parameter9val" class="d-flex justify-content-center text-success fw-bold"></div>
+                                <div id="recParaSlider9"></div>
+                                @Html.EditorFor(model => model.Parameter9, new { htmlAttributes = new { @class = "form-control", required = "required", @style = "visibility:hidden;" } })
+                                @Html.ValidationMessageFor(model => model.Parameter9, "", new { @class = "text-danger small d-block text-center" })
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="text-center">
+                                @Html.LabelFor(model => model.Parameter10, htmlAttributes: new { @class = "col-form-label fw-bold" })
+                            </div>
+                            <div>
+                                <div id="parameter10val" class="d-flex justify-content-center text-success fw-bold"></div>
+                                <div id="recParaSlider10"></div>
+                                @Html.EditorFor(model => model.Parameter10, new { htmlAttributes = new { @class = "form-control", required = "required", @style = "visibility:hidden;" } })
+                                @Html.ValidationMessageFor(model => model.Parameter10, "", new { @class = "text-danger small d-block text-center" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 justify-content-center">
+                        <input id="recSubBtn" type="submit" class="btn btn-primary w-50" value="Submit Form">
+                    </div>
+                </div>
+            </form>
+            <!-- End Recommendation Form -->
+        </div>
+    </div>
+</div>
+
+<!-- Vertically centered Modal -->
+<div class="modal fade" id="recLoaderModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-primary"><i class="bi bi-info-circle-fill g-5"></i>&nbsp;Information</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="recLoaderModal-modal-body">
+                <div>
+                    <h5 class="text-success text-center">System is finding the best matches for you...</h5>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-border" role="status"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Vertically centered Modal-->
+<!-- Vertically centered Modal -->
+<div class="modal fade" id="recResultModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-success"><i class="bi bi-info-circle-fill g-5"></i>&nbsp;Results</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body bg-light" id="recResultModal-modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Vertically centered Modal-->
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/ViewScripts/Slider.js"></script>
+    <script src="~/ViewScripts/Recommendation.js"></script>
+}
